@@ -1,25 +1,94 @@
 import React from "react";
 import PropTypes from "prop-types";
+// Redux
 import { connect } from "react-redux";
 import { setApp } from "./store/actions";
+// i18n
 import { Translation } from "react-i18next";
 import i18n from "i18next";
+// Router
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+//
+import styled from "styled-components";
+
+const Div = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+`;
+
+function Home() {
+  return <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
+
+function NoMatch() {
+  return <h1>Page404</h1>;
+}
 
 class App extends React.Component {
   state = {
     language: "zhTW"
   };
 
-  changeLanguage = () => {
-    i18n.changeLanguage("en");
+  changeLanguage = async () => {
+    if (this.state.language === "zhTW") {
+      this.setState({
+        language: "en"
+      });
+      i18n.changeLanguage("en");
+    } else {
+      this.setState({
+        language: "zhTW"
+      });
+      i18n.changeLanguage("zhTW");
+    }
   };
 
   render() {
     return (
-      <div className="App">
-        <button onClick={this.changeLanguage}>繁體 / EN</button>
+      <Div>
+        <button onClick={this.changeLanguage}>{this.state.language}</button>
         <Translation>{t => <>{t("app.hello")}</>}</Translation>
-      </div>
+        <Router>
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/users">Users</Link>
+                </li>
+              </ul>
+            </nav>
+
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/users">
+                <Users />
+              </Route>
+              <Route path="*">
+                <NoMatch />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+      </Div>
     );
   }
 }

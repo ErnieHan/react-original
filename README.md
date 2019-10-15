@@ -2,9 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Creat-React-App 基本包裝型
 
-已經安裝設置好 Redux Styled-Component 包裝專案
+已安裝設置許多基本套件的包裝專案
 
-### `npm start or yarn start`
+### Router Redux JSON-server i18n 語言 Styled-Component
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
