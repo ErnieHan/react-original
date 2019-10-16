@@ -1,8 +1,11 @@
+import { combineReducers } from "redux";
+import updateTheme from "./updateTheme";
+
 const initialState = {
   active: true
 };
 
-export default (state = initialState, action) => {
+const index = (state = initialState, action) => {
   switch (action.type) {
     case "SET_APP":
       return {
@@ -14,3 +17,10 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+const reducers = combineReducers({
+  index,
+  updateTheme
+});
+
+export default reducers;

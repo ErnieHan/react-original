@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 已安裝設置含有許多基本套件的 React 包裝專案。
 
-#### `基本套件含有 Router Redux JSON-server i18n 語言 Styled-Component`
+#### `基本套件含有 Router Redux JSON-server i18n語言包 Styled-Component`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

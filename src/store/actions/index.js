@@ -1,3 +1,6 @@
+import getCookie from "../../function/getCookie";
+import writeCookie from "../../function/writeCookie";
+
 // 基本型
 export const setApp = () => {
   return {
@@ -21,4 +24,51 @@ export const fetchProduct = cbu => async dispatch => {
     .then(data => {
       console.log(data);
     });
+};
+
+const primaryTheme = {
+  background: "#FFFFFF",
+  textColor: "#000000"
+};
+
+const darkTheme = {
+  background: "#2F2F2F",
+  textColor: "#CCCCCC"
+};
+
+export const readThemeCookie = () => dispatch => {
+  // 更換網站介面顏色
+  const theme_cookie = getCookie("theme");
+  if (!theme_cookie) {
+    // 1. 預設主題顏色為亮色
+    writeCookie("theme", "primary");
+    const themeName = "primary";
+    const themeColors = primaryTheme;
+    dispatch(updateTheme(themeName, themeColors));
+  } else {
+    // 1. 抓取目前的主題顏色
+    const themeName = getCookie("theme");
+    const themeColors = themeName === "primary" ? primaryTheme : darkTheme;
+    dispatch(updateTheme(themeName, themeColors));
+  }
+};
+
+export const changeTheme = themeName => dispatch => {
+  if (themeName === "primary") {
+    const themeColors = primaryTheme;
+    writeCookie("theme", themeName);
+    dispatch(updateTheme(themeName, themeColors));
+  } else {
+    const themeColors = darkTheme;
+    writeCookie("theme", themeName);
+    dispatch(updateTheme(themeName, themeColors));
+  }
+};
+
+export const updateTheme = (themeName, themeColors) => {
+  return {
+    type: "UPDATE_THEME",
+    themeName,
+    themeColors
+  };
 };
