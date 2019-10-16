@@ -136,6 +136,7 @@ class App extends React.Component {
     return (
       getThemeSuccessfully && (
         <Content className="transition">
+          {console.log(themeColors)}
           <style>{`
           body{
             background: ${themeColors.background};

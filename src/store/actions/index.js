@@ -28,12 +28,14 @@ export const fetchProduct = cbu => async dispatch => {
 
 const primaryTheme = {
   background: "#FFFFFF",
-  textColor: "#000000"
+  textColor: "#000000",
+  button: "red"
 };
 
 const darkTheme = {
   background: "#2F2F2F",
-  textColor: "#CCCCCC"
+  textColor: "#CCCCCC",
+  button: "darkred"
 };
 
 export const readThemeCookie = () => dispatch => {
