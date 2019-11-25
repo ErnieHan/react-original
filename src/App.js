@@ -17,12 +17,14 @@ import Page404 from "./pages/Page404";
 // function
 import getCookie from "./function/getCookie";
 import writeCookie from "./function/writeCookie";
+import ErrorMessage from "./components/ErrorMessage";
 
 const Content = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 35px 15px;
   background: ${props => props.theme.background};
+  color: ${props => props.theme.textColor};
 `;
 
 const LanguageButton = styled.button`
@@ -135,12 +137,10 @@ class App extends React.Component {
     const { getThemeSuccessfully, themeName, themeColors } = this.props;
     return (
       getThemeSuccessfully && (
-        <Content className="transition">
-          {console.log(themeColors)}
+        <Content theme={themeColors}>
           <style>{`
           body{
             background: ${themeColors.background};
-            color: ${themeColors.textColor};
           }
           `}</style>
           <Translation>{t => <h1>{t("app.hello")}</h1>}</Translation>
@@ -155,6 +155,7 @@ class App extends React.Component {
             />
             <div />
           </Label>
+          <ErrorMessage />
           <Router>
             <div>
               <nav>
@@ -220,7 +221,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
