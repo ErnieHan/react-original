@@ -2,7 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://erniehan.github.io/react-original/",
+  "homepage": "https://erniehan.github.io/once/",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.3.2",
