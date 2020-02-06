@@ -61,7 +61,8 @@
   },
   "jest": {
     "setupFiles": [
-      "<rootDir>/jest.setup.js"
+      "<rootDir>/jest.setup.js",
+      "core-js"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/.next/",
