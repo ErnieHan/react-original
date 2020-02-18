@@ -11,6 +11,7 @@ server.post("/cm/v1/campaigns", function(req, res) {
   // http://localhost:3000 是網站的Domain網域 (也有可能是8080)
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Credentials", "true");
+  // 回傳的資料為{ region: "TWN", campaignCode: "MR" }
   res.jsonp({ region: "TWN", campaignCode: "MR" });
 });
 
