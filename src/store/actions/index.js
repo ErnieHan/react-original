@@ -74,3 +74,29 @@ export const updateTheme = (themeName, themeColors) => {
     themeColors
   };
 };
+
+// TEST
+export const addCounter = () => {
+  return {
+    type: "ADD_COUNTER",
+    payload: { addQuantity: 1 }
+  };
+};
+
+// Fetch TEST
+export const fetchCount = () => async dispatch => {
+  try {
+    const response = await fetch("http://example.com/count");
+    const result = await response.json();
+    console.log("result:", result);
+    dispatch(updateCount(result));
+  } catch (error) {
+    console.log("error:", error);
+  } finally {
+  }
+};
+
+export const updateCount = result => ({
+  type: "UPDATE_COUNTER",
+  result
+});
