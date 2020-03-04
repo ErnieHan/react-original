@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 // Redux
 import { connect } from "react-redux";
-import { setApp } from "../store/actions";
+import { fetchApple, fetchData } from "../store/actions/home";
 
 export class Home extends Component {
+  componentDidMount() {
+    this.props.fetchData();
+  }
+
   render() {
     return (
       <div>
+        {console.log("setAppActive", this.props.setAppActive)}
+        {console.log("fetched", this.props.fetched)}
         <h1>Home Page</h1>
       </div>
     );
@@ -14,12 +20,14 @@ export class Home extends Component {
 }
 
 export const mapStateToProps = state => ({
-  active: state.app.active
+  fetched: state.home.fetched,
+  setAppActive: state.app.index.active
 });
 
 export const mapDispatchToProps = dispatch => {
   return {
-    setApp: () => dispatch(setApp())
+    fetchApple: () => dispatch(fetchApple()),
+    fetchData: () => dispatch(fetchData())
   };
 };
 
