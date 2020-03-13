@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 // Redux
 import { connect } from "react-redux";
-import { fetchApple, fetchData } from "../store/actions/home";
+import { fetchApple, fetchData, fetchTesting } from "../store/actions/home";
 
 export class Home extends Component {
   componentDidMount() {
-    this.props.fetchData();
+    this.props.fetchTesting();
   }
 
   render() {
     return (
       <div>
-        {console.log("setAppActive", this.props.setAppActive)}
-        {console.log("fetched", this.props.fetched)}
         <h1>Home Page</h1>
       </div>
     );
@@ -27,7 +25,8 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => {
   return {
     fetchApple: () => dispatch(fetchApple()),
-    fetchData: () => dispatch(fetchData())
+    fetchData: () => dispatch(fetchData()),
+    fetchTesting: () => dispatch(fetchTesting())
   };
 };
 

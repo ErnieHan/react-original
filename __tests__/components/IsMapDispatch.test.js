@@ -12,7 +12,7 @@ describe("Dice", () => {
 
   it("should roll the dice again when button is clicked", () => {
     const dispatch = jest.fn();
-    mapDispatchToProps(dispatch).fetchData();
+    mapDispatchToProps(dispatch).fetchTesting();
     expect(dispatch.mock.calls[0][0]).toEqual({ type: "SET_APP" });
   });
 });

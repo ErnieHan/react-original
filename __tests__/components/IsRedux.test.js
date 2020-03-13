@@ -2,6 +2,7 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import fetchMock from "fetch-mock";
 import { addCounter, fetchCount, updateCount } from "../../src/store/actions";
+import { fetchTesting } from "../../src/store/actions/home";
 import reducer from "../../src/store/reducers/fetchTest";
 
 const middlewares = [thunk];
@@ -19,6 +20,16 @@ describe("addCount", () => {
       payload: { addQuantity: 1 }
     };
     expect(addCounter()).toEqual(expectAction);
+  });
+
+  test("get count dispatch of action", () => {
+    // 創建 store
+    const store = mockStore({ count: 0 });
+    const expectedActions = [{ type: "SET_APP" }, { type: "FETCH_APPLE" }];
+    // 1. 執行fetchTesting()
+    store.dispatch(fetchTesting());
+    // 2. 是否執行SET_APP及FETCH_APPLE
+    expect(store.getActions()).toEqual(expectedActions);
   });
 
   test("get count dispatch of action", () => {

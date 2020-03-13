@@ -100,6 +100,7 @@ class App extends React.Component {
         language: now_language_cookie
       });
       i18n.changeLanguage(now_language_cookie);
+      document.documentElement.lang = now_language_cookie;
     }
     readThemeCookie();
   }
@@ -112,6 +113,7 @@ class App extends React.Component {
       });
       i18n.changeLanguage("en");
       writeCookie("language", "en");
+      document.documentElement.lang = "en";
     } else {
       // 修改為英文
       this.setState({
@@ -119,6 +121,7 @@ class App extends React.Component {
       });
       i18n.changeLanguage("zhTW");
       writeCookie("language", "zhTW");
+      document.documentElement.lang = "zhTW";
     }
   };
 
