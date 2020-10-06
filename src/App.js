@@ -7,7 +7,7 @@ import { setApp, readThemeCookie, changeTheme } from "./store/actions";
 import { Translation } from "react-i18next";
 import i18n from "i18next";
 // Router
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // Style-Components
 import styled from "styled-components";
 // Pages
@@ -100,14 +100,17 @@ class App extends React.Component {
         language: now_language_cookie
       });
       i18n.changeLanguage(now_language_cookie);
-      document.documentElement.lang = now_language_cookie;
+      console.log(now_language_cookie);
+      if (now_language_cookie === "en") {
+        document.documentElement.lang = "en";
+      }
     }
     readThemeCookie();
   }
 
   changeLanguage = () => {
     if (this.state.language === "zhTW") {
-      // 修改為繁體中文
+      // 修改為英文
       this.setState({
         language: "en"
       });
@@ -115,13 +118,13 @@ class App extends React.Component {
       writeCookie("language", "en");
       document.documentElement.lang = "en";
     } else {
-      // 修改為英文
+      // 修改為繁體中文
       this.setState({
         language: "zhTW"
       });
       i18n.changeLanguage("zhTW");
       writeCookie("language", "zhTW");
-      document.documentElement.lang = "zhTW";
+      document.documentElement.lang = "zh-Hant-TW";
     }
   };
 
@@ -147,15 +150,9 @@ class App extends React.Component {
           }
           `}</style>
           <Translation>{t => <h1>{t("app.hello")}</h1>}</Translation>
-          <LanguageButton onClick={this.changeLanguage}>
-            點擊切換語言，目前語言為：{this.state.language}
-          </LanguageButton>
+          <LanguageButton onClick={this.changeLanguage}>點擊切換語言，目前語言為：{this.state.language}</LanguageButton>
           <Label>
-            <input
-              type="checkbox"
-              onChange={this.handleChangeTheme}
-              checked={themeName === "dark"}
-            />
+            <input type="checkbox" onChange={this.handleChangeTheme} checked={themeName === "dark"} />
             <div />
           </Label>
           <ErrorMessage />
