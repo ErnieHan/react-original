@@ -12,6 +12,7 @@ export class Home extends Component {
     return (
       <div>
         <h1>Home Page</h1>
+        testing
       </div>
     );
   }
